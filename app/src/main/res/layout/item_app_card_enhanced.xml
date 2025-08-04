@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    android:layout_marginHorizontal="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@color/surface_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Enhanced Risk Level Indicator with Gradient -->
+        <View
+            android:id="@+id/risk_indicator"
+            android:layout_width="6dp"
+            android:layout_height="0dp"
+            android:background="@drawable/gradient_high_risk"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Premium App Icon with Shadow -->
+        <FrameLayout
+            android:id="@+id/icon_container"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/risk_indicator">
+
+            <!-- Icon Shadow -->
+            <View
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="2dp"
+                android:background="@drawable/circle_shadow"
+                android:alpha="0.3" />
+
+            <!-- App Icon -->
+            <ImageView
+                android:id="@+id/app_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_background"
+                android:elevation="2dp"
+                tools:src="@drawable/ic_apps" />
+
+        </FrameLayout>
+
+        <!-- App Name with Enhanced Typography -->
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintTop_toTopOf="@id/icon_container"
+            app:layout_constraintStart_toEndOf="@id/icon_container"
+            app:layout_constraintEnd_toStartOf="@id/risk_score_badge"
+            tools:text="SocialNet" />
+
+        <!-- Enhanced Risk Score Badge -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/risk_score_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/high_risk_color"
+            app:layout_constraintTop_toTopOf="@id/icon_container"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/risk_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="85"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_on_primary"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:minWidth="40dp"
+                android:gravity="center"
+                tools:text="85" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Risk Level with Icon -->
+        <LinearLayout
+            android:id="@+id/risk_level_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/app_name"
+            app:layout_constraintStart_toEndOf="@id/icon_container"
+            app:layout_constraintEnd_toStartOf="@id/risk_score_badge">
+
+            <ImageView
+                android:id="@+id/risk_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_warning"
+                app:tint="@color/high_risk_color"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/risk_level_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Risk"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/high_risk_color"
+                tools:text="High Risk" />
+
+        </LinearLayout>
+
+        <!-- Enhanced Details with Icons -->
+        <LinearLayout
+            android:id="@+id/details_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/risk_level_container"
+            app:layout_constraintStart_toEndOf="@id/icon_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/icon_container">
+
+            <!-- Permissions Count -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_shield"
+                    app:tint="@color/text_secondary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/permissions_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    tools:text="12" />
+
+            </LinearLayout>
+
+            <!-- Trackers Count -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_tracker"
+                    app:tint="@color/text_secondary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/trackers_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    tools:text="4" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Progress Bar for Risk Level -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/risk_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:progress="85"
+            android:max="100"
+            app:indicatorColor="@color/high_risk_color"
+            app:trackColor="@color/divider_color"
+            app:trackCornerRadius="2dp"
+            app:indicatorCornerRadius="2dp"
+            app:layout_constraintTop_toBottomOf="@id/icon_container"
+            app:layout_constraintStart_toEndOf="@id/risk_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:progress="85" />
+
+        <!-- Quick Actions Overlay (Hidden by default) -->
+        <LinearLayout
+            android:id="@+id/quick_actions"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/overlay_light"
+            android:visibility="gone"
+            android:alpha="0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                android:layout_marginEnd="8dp"
+                style="@style/Widget.Material3.Button.TextButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                style="@style/Widget.Material3.Button.TextButton" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

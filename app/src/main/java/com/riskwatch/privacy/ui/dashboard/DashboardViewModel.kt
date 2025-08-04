@@ -42,7 +42,6 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                 _allApps.value = apps
                 applyFilter(currentFilter)
             } catch (e: Exception) {
-                // Handle error - could show error message to user
                 _allApps.value = emptyList()
                 _filteredApps.value = emptyList()
             } finally {
@@ -59,16 +58,16 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     private fun applyFilter(filter: FilterType) {
         val apps = allApps.value ?: return
         
-        val filtered = when (filter) {
-            FilterType.ALL_APPS -> apps
-            FilterType.HIGH_RISK -> apps.filter { it.riskLevel == RiskLevel.HIGH }
-            FilterType.MEDIUM_RISK -> apps.filter { it.riskLevel == RiskLevel.MEDIUM }
-            FilterType.LOW_RISK -> apps.filter { it.riskLevel == RiskLevel.LOW }
-            FilterType.WITH_TRACKERS -> apps.filter { it.trackers.isNotEmpty() }
-        }
-        
-        _filteredApps.value = filtered
+            val filtered = when (filter) {
+                FilterType.ALL_APPS -> apps
+                FilterType.HIGH_RISK -> apps.filter { it.riskLevel == RiskLevel.HIGH }
+                FilterType.MEDIUM_RISK -> apps.filter { it.riskLevel == RiskLevel.MEDIUM }
+                FilterType.LOW_RISK -> apps.filter { it.riskLevel == RiskLevel.LOW }
+                FilterType.WITH_TRACKERS -> apps.filter { it.trackers.isNotEmpty() }
+            }
+            
+            _filteredApps.value = filtered
     }
     
     fun getAppIcon(packageName: String) = appScanner.getAppIcon(packageName)
-}
+    }
