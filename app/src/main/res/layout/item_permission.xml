@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Permission Icon -->
+        <ImageView
+            android:id="@+id/permission_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@android:drawable/ic_menu_camera" />
+
+        <!-- Permission Name -->
+        <TextView
+            android:id="@+id/permission_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            app:layout_constraintTop_toTopOf="@id/permission_icon"
+            app:layout_constraintStart_toEndOf="@id/permission_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Camera" />
+
+        <!-- Permission Description -->
+        <TextView
+            android:id="@+id/permission_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintTop_toBottomOf="@id/permission_name"
+            app:layout_constraintStart_toEndOf="@id/permission_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Allows this app to take photos and record videos at any time." />
+
+        <!-- Technical Permission Name -->
+        <TextView
+            android:id="@+id/permission_technical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:fontFamily="monospace"
+            app:layout_constraintTop_toBottomOf="@id/permission_description"
+            app:layout_constraintStart_toEndOf="@id/permission_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="android.permission.CAMERA" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
