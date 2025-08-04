@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.riskwatch.privacy.ui.dashboard.DashboardFragment"
+        android:label="@string/dashboard_title"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_appDetails"
+            app:destination="@id/appDetailsFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_settings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_alerts"
+            app:destination="@id/alertsFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_compare"
+            app:destination="@id/compareFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/appDetailsFragment"
+        android:name="com.riskwatch.privacy.ui.details.AppDetailsFragment"
+        android:label="@string/app_details_title"
+        tools:layout="@layout/fragment_app_details">
+        <argument
+            android:name="appInfo"
+            app:argType="com.riskwatch.privacy.data.models.AppInfo" />
+        <action
+            android:id="@+id/action_appDetails_to_dashboard"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/compareFragment"
+        android:name="com.riskwatch.privacy.ui.compare.CompareFragment"
+        android:label="@string/compare_apps"
+        tools:layout="@layout/fragment_compare">
+        <action
+            android:id="@+id/action_compare_to_dashboard"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/alertsFragment"
+        android:name="com.riskwatch.privacy.ui.alerts.AlertsFragment"
+        android:label="@string/privacy_alerts"
+        tools:layout="@layout/fragment_alerts">
+        <action
+            android:id="@+id/action_alerts_to_dashboard"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_alerts_to_appDetails"
+            app:destination="@id/appDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.riskwatch.privacy.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settings_to_dashboard"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/dashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>
