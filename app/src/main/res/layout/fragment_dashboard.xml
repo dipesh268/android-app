@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,132 +7,335 @@
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <!-- Header/Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary_color"
-        app:title="RiskWatch"
-        app:titleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/dashboard_menu" />
-
-    <!-- Filter Chips -->
-    <HorizontalScrollView
-        android:id="@+id/filter_scroll_view"
-        android:layout_width="0dp"
+    <!-- Modern App Bar with Elevation -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:elevation="8dp"
+        app:elevation="8dp">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/filter_chip_group"
+        <!-- Enhanced Toolbar with Gradient Background -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_primary_toolbar"
+            app:title="RiskWatch"
+            app:titleTextColor="@color/text_on_primary"
+            app:titleTextAppearance="@style/RiskWatch.Text.Toolbar"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:menu="@menu/dashboard_menu" />
+
+        <!-- Privacy Stats Header Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/stats_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/surface_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <!-- Total Apps Counter -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/total_apps_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color"
+                        tools:text="42" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Apps"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <!-- High Risk Counter -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/high_risk_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/high_risk_color"
+                        tools:text="8" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="High Risk"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+                <!-- Average Score -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/average_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/warning_color"
+                        tools:text="45" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avg Score"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Enhanced Filter Chips with Modern Design -->
+        <HorizontalScrollView
+            android:id="@+id/filter_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:scrollbars="none"
+            android:clipToPadding="false">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filter_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipSpacing="12dp"
+                app:singleSelection="true"
+                app:selectionRequired="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_all_apps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Apps"
+                    android:checked="true"
+                    app:chipCornerRadius="20dp"
+                    app:chipBackgroundColor="@color/chip_background"
+                    app:checkedIconTint="@color/primary_color"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_high_risk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="High Risk"
+                    app:chipIcon="@drawable/ic_circle_red"
+                    app:chipCornerRadius="20dp"
+                    app:chipIconTint="@color/high_risk_color"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_medium_risk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medium Risk"
+                    app:chipIcon="@drawable/ic_circle_yellow"
+                    app:chipCornerRadius="20dp"
+                    app:chipIconTint="@color/medium_risk_color"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_low_risk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Low Risk"
+                    app:chipIcon="@drawable/ic_circle_green"
+                    app:chipCornerRadius="20dp"
+                    app:chipIconTint="@color/low_risk_color"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_with_trackers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="With Trackers"
+                    app:chipIcon="@drawable/ic_tracker"
+                    app:chipCornerRadius="20dp"
+                    style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Enhanced RecyclerView with Pull-to-Refresh -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:refreshing="false">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/apps_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_app_card_enhanced" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Modern Loading State -->
+    <FrameLayout
+        android:id="@+id/loading_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/overlay_light"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:selectionRequired="true">
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_all_apps"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All Apps"
-                android:checked="true"
-                style="@style/Widget.MaterialComponents.Chip.Filter" />
+                android:orientation="vertical"
+                android:padding="32dp"
+                android:gravity="center">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_high_risk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High Risk"
-                app:chipIcon="@drawable/ic_circle_red"
-                style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/loading_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:indicatorColor="@color/primary_color"
+                    app:trackColor="@color/primary_light" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_medium_risk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium Risk"
-                app:chipIcon="@drawable/ic_circle_yellow"
-                style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scanning Apps..."
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="16dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_low_risk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Low Risk"
-                app:chipIcon="@drawable/ic_circle_green"
-                style="@style/Widget.MaterialComponents.Chip.Filter" />
+                <TextView
+                    android:id="@+id/scanning_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Analyzing permissions..."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="8dp"
+                    tools:text="Checking 23 of 45 apps" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_with_trackers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="With Trackers"
-                style="@style/Widget.MaterialComponents.Chip.Filter" />
+            </LinearLayout>
 
-        </com.google.android.material.chip.ChipGroup>
+        </com.google.android.material.card.MaterialCardView>
 
-    </HorizontalScrollView>
+    </FrameLayout>
 
-    <!-- App List -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/apps_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="16dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/filter_scroll_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_app_card" />
-
-    <!-- Loading Progress -->
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/loading_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@id/apps_recycler_view"
-        app:layout_constraintBottom_toBottomOf="@id/apps_recycler_view"
-        app:layout_constraintStart_toStartOf="@id/apps_recycler_view"
-        app:layout_constraintEnd_toEndOf="@id/apps_recycler_view" />
-
-    <!-- Empty State -->
+    <!-- Enhanced Empty State -->
     <LinearLayout
         android:id="@+id/empty_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:gravity="center"
+        android:padding="32dp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@id/apps_recycler_view"
-        app:layout_constraintBottom_toBottomOf="@id/apps_recycler_view"
-        app:layout_constraintStart_toStartOf="@id/apps_recycler_view"
-        app:layout_constraintEnd_toEndOf="@id/apps_recycler_view">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_apps"
-            android:alpha="0.5" />
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_empty_state"
+            android:alpha="0.6"
+            app:tint="@color/primary_color" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No apps found"
-            android:textSize="16sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginTop="16dp" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Try adjusting your filters or pull to refresh"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="8dp"
+            android:gravity="center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh Apps"
+            android:layout_marginTop="24dp"
+            style="@style/RiskWatch.Button" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Floating Action Button for Quick Scan -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_quick_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Quick Scan"
+        app:icon="@drawable/ic_scan"
+        app:backgroundTint="@color/primary_color"
+        app:iconTint="@color/text_on_primary"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
