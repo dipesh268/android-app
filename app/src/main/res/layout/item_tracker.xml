@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/divider_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Tracker Category Icon -->
+        <ImageView
+            android:id="@+id/tracker_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/ic_tracker" />
+
+        <!-- Tracker Name -->
+        <TextView
+            android:id="@+id/tracker_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            app:layout_constraintTop_toTopOf="@id/tracker_icon"
+            app:layout_constraintStart_toEndOf="@id/tracker_icon"
+            app:layout_constraintEnd_toStartOf="@id/tracker_category_chip"
+            tools:text="Google AdMob" />
+
+        <!-- Tracker Category Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tracker_category_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Advertising"
+            android:textSize="12sp"
+            app:chipCornerRadius="12dp"
+            app:chipMinHeight="24dp"
+            app:chipBackgroundColor="@color/advertising_light"
+            app:layout_constraintTop_toTopOf="@id/tracker_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Advertising" />
+
+        <!-- Tracker Description -->
+        <TextView
+            android:id="@+id/tracker_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintTop_toBottomOf="@id/tracker_name"
+            app:layout_constraintStart_toEndOf="@id/tracker_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Mobile advertising platform by Google" />
+
+        <!-- Company Name -->
+        <TextView
+            android:id="@+id/tracker_company"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            android:textColor="@color/text_tertiary"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/tracker_description"
+            app:layout_constraintStart_toEndOf="@id/tracker_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="by Google Inc." />
+
+        <!-- Privacy Impact Indicator -->
+        <View
+            android:id="@+id/privacy_impact_indicator"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@color/advertising_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
