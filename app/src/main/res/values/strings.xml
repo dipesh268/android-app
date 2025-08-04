@@ -110,4 +110,31 @@
     <string name="error_loading_apps">Error loading apps. Please try again.</string>
     <string name="error_permission_required">Permission required to scan apps.</string>
     <string name="error_network_unavailable">Network unavailable. Some features may be limited.</string>
+    
+    <!-- Compare Apps -->
+    <string name="compare_apps_description">Compare privacy scores and permissions between two apps.</string>
+    <string name="select_apps_to_compare">Select Apps to Compare</string>
+    <string name="select_first_app">Select First App</string>
+    <string name="select_second_app">Select Second App</string>
+    <string name="comparison_results">Comparison Results</string>
+    
+    <!-- Alerts -->
+    <string name="no_privacy_alerts">No privacy alerts at this time.</string>
+    
+    <!-- Settings -->
+    <string name="privacy_settings">Privacy Settings</string>
+    <string name="auto_scan_apps">Auto-scan new apps</string>
+    <string name="privacy_notifications">Privacy notifications</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="app_settings">App Settings</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="export_data">Export Data</string>
+    <string name="about">About</string>
+    <string name="app_version">App Version: 1.0.0</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    
+    <!-- Alert Items -->
+    <string name="alert_icon">Alert Icon</string>
+    <string name="view_details">View Details</string>
 </resources>
